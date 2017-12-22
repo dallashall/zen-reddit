@@ -70,5 +70,60 @@
 "use strict";
 
 
+var _api = __webpack_require__(1);
+
+window.getToApi = _api.getToApi;
+window.postToApi = _api.postToApi;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var apiBase = 'http://localhost:3000';
+
+var toApi = function toApi(url, method, payload, token) {
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onload = function xhrOnload() {
+      console.log(this.response);
+      var res = JSON.parse(this.response);
+      if (res.status > 199 && res.status < 300) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    };
+
+    xhr.onerror = function xhrOnerror() {
+      reject(this.response);
+    };
+
+    var params = JSON.stringify(payload);
+    var fullUrl = apiBase + url;
+
+    xhr.open(method, fullUrl);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-urlencoded');
+    // xhr.setRequestHeader('X-Modhash', token);
+    xhr.send(params);
+  });
+};
+
+var postToApi = exports.postToApi = function postToApi(url, payload, token) {
+  return toApi(url, 'POST', payload, token);
+};
+
+var getToApi = exports.getToApi = function getToApi(url, payload, token) {
+  return toApi(url, 'GET', payload, token).then(function (r) {
+    return console.log(r);
+  });
+};
+
 /***/ })
 /******/ ]);

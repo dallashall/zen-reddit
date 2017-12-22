@@ -2,9 +2,10 @@
   "name": "zen-reddit",
   "version": "1.0.0",
   "description": "Simplified Subreddit Browsing",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/index.js"
   },
   "author": "Dallas Hall <dallas.hall@gmail.com>",
   "license": "ISC",
@@ -17,5 +18,9 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "http-proxy-middleware": "^0.17.4"
   }
 }

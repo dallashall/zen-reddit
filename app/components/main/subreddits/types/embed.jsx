@@ -8,11 +8,14 @@ export const PostCollapsed = ({
   thumbnail,
   id,
   created_utc,
-  secure_media_embed
+  secure_media_embed,
+  toggleExpanded,
 }) => (
   <section className="post post-collapse">
     <header>
-      <h3 className="post-title">{title}</h3>
+      <button onClick={toggleExpanded}>
+        <h3 className="post-title">{title}</h3>
+      </button>
       <p className="post-body">{body}</p>
       <p className="post-author"><span>{ups}+</span> by {author}</p>
     </header>
@@ -28,12 +31,15 @@ export const PostExpanded = ({
   thumbnail,
   id,
   created_utc,
-  secure_media_embed
+  secure_media_embed,
+  toggleExpanded
 }) => (
   <section className="post post-expand">
     <header>
       <div>
-        <h3 className="post-title">{title}</h3>
+        <button onClick={toggleExpanded}>
+          <h3 className="post-title">{title}</h3>
+        </button>
         <p className="post-author"><span>{ups}+</span> by {author}</p>
       </div>
     </header>

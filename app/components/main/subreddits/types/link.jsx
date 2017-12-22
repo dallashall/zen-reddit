@@ -8,10 +8,13 @@ export const PostCollapsed = ({
   thumbnail,
   id,
   created_utc,
+  toggleExpanded
 }) => (
   <section className="post post-collapse">
     <header>
-      <h3 className="post-title">{title}</h3>
+      <button onClick={toggleExpanded}>
+        <h3 className="post-title">{title}</h3>
+      </button>
       <p className="post-body">{selftext}</p>
       <p className="post-author"><span>{ups}+</span> by {author}</p>
     </header>
@@ -28,14 +31,17 @@ export const PostExpanded = ({
   id,
   url,
   created_utc,
+  toggleExpanded
 }) => (
   <section className="post post-expand">
     <header>
       <div>
-        <h3 className="post-title">{title}</h3>
+        <button onClick={toggleExpanded}>
+          <h3 className="post-title">{title}</h3>
+        </button>
         <p className="post-author"><span>{ups}+</span> by {author}</p>
       </div>
     </header>
-    <a className="post-body">{url}</a>
+    <a href={url} className="post-body">{url}</a>
   </section>
 );

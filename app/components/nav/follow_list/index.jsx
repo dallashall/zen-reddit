@@ -6,7 +6,7 @@ export default ({subreddits, removeSubreddit }) => (
     <h2>Currently Following</h2>
     {
      subreddits.map(({ id, name }) => (
-        <ListItem key={`item-${id}`} name={name} removeSubreddit={removeSubreddit} />
+        <ListItem key={`item-${id}`} name={name} id={id} removeSubreddit={removeSubreddit} />
       ))
     }
   </article>

@@ -7,6 +7,10 @@ class Search extends Component {
       query: '',
     };
   }
+  
+  componentDidMount() {
+    this.props.addSubreddit({name: 'news', id:'t5_2qh3l'});
+  }
 
   update = (e) => {
     this.setState({ query: e.target.value }, () => {
@@ -14,27 +18,35 @@ class Search extends Component {
     });
   }
 
-  add = (e) => {
-    e.preventDefault();
-    console.log(e.target);
-    const name = e.target.value;
-    this.setState({query: name}, () => this.props.addSubreddit(name))
+  add = (name) => {
+    return e => {
+      e.preventDefault();
+      this.props.addSubreddit(name);
+      this.setState({query: ""});
+      this.props.clearSearch();
+    }
   }
 
   render() {
     return (
       <section className="search">
-        {console.log(this.props)}
         <h2>Search Subreddits</h2>
-        <form className="search-form" onSubmit={this.add}>
-          <input onInput={this.update} value={this.state.query} type="search" name="search" list="search-list"/>
-          <datalist id="search-list">
+        <form className="search-form" onSubmit={e => e.preventDefault()}>
+          <input
+            onChange={this.update}
+            value={this.state.query}
+            type="search"
+            name="search"
+          />
+          <ul id="search-list">
             {
               this.props.autocompleteOptions.map(({id, name}) => (
-                <option key={name} value={name}>{name}</option>
+                <li key={name}>
+                  <button onClick={this.add({ name, id })}>{name}</button>
+                </li>
               ))
             }
-          </datalist>
+          </ul>
         </form>
       </section>
     );

@@ -25,6 +25,7 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   overflow-y: scroll;
   height: calc(100vh - 71px);
@@ -44,7 +45,19 @@ main {
 
 .search-form {
   margin-top: 30px;
-  display: flex;
+  /* display: flex; */
+}
+
+.search-form ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.search-form li {
+  margin: 0;
+  margin-top: 10px;
 }
 
 .search-form input {
@@ -56,13 +69,15 @@ main {
 .search-form button {
   border: 1px solid rgb(20, 220, 88);
   padding: 10px;
-  margin-left: 10px;
+  width: 100%;
+  text-overflow: ellipsis;
 }
 
 .search-form button:hover {
   background: rgb(20, 220, 88);
   border: 1px solid rgb(20, 220, 88);
   color: white;
+  cursor: pointer;
 }
 
 .search-form button:active {
@@ -127,6 +142,27 @@ main {
   margin-top: 30px;
 }
 
+.post button {
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.post button:hover, .post a:hover {
+  color: rgb(20, 220, 88);
+}
+
+.post button:active, .post a:active {
+  color: rgb(0, 100, 60);
+}
+
+.post-collapse .post-body {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 500px;
+}
+
 .post-expand {
   flex-direction: column;
 }
@@ -152,14 +188,18 @@ main {
   margin-top: 15px;
 }
 
+.post iframe {
+  margin-top: 30px;
+}
+
 .thumbnail {
   margin-top: 30px;
 }
 
 .thumbnail-placeholder {
   width: 120px;
-  height: 50px;
-  background-color: azure;
+  min-height: 80px;
+  background: linear-gradient(to top left, rgb(0, 100, 60) 50%, rgb(20, 220, 88) 50%);
 }
 
 .comments {
@@ -191,6 +231,7 @@ main {
   display: block;
   padding: 15px;
   border: 2px solid rgb(20, 220, 88);
+  cursor: pointer;
 }
 
 .btn-load-more:hover {
@@ -203,7 +244,10 @@ main {
   border: 2px solid rgb(0, 100, 60);
 }
 
+
 main > footer {
   margin: 30px 0;
   padding:30px;
+  position: relative;
+  bottom: 0;
 }

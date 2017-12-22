@@ -6,7 +6,7 @@ import Main from './main';
 export default ({ store }) => (
   <Provider store={store}>
     <React.Fragment>
-      <header>
+      <header className="page-title">
         <h1>Zen Reddit</h1>
       </header>
       <div className="container">

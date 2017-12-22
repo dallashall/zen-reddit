@@ -7,13 +7,15 @@ export default ({
   addSubreddit,
   removeSubreddit,
   autocompleteOptions,
-  autocomplete
+  autocomplete,
+  clearSearch,
 }) => (
   <nav className="side-menu">
     <Search
       addSubreddit={addSubreddit}
       autocompleteOptions={autocompleteOptions}
       autocomplete={autocomplete}
+      clearSearch ={clearSearch}
     />
     <FollowList
       subreddits={subreddits}

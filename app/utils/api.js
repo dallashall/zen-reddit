@@ -23,7 +23,7 @@ const toApi = function toApi(url, method, payload, token) {
 
     xhr.open(method, fullUrl);
     xhr.setRequestHeader('Content-Type', 'application/x-www-urlencoded');
-    // xhr.setRequestHeader('X-Modhash', token);
+    xhr.setRequestHeader('X-Modhash', token);
     xhr.send(params);
   });
 };

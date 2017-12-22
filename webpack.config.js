@@ -18,10 +18,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react']
+            presets: ['env', 'react'],
+            plugins: [
+              'transform-class-properties',
+              'transform-object-rest-spread'
+            ]
           }
         }
       }
     ]
-  }
+  },
+  devtool: "source-map"
 };

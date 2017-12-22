@@ -7,7 +7,7 @@ import {
   getToApi,
   postToApi,
 } from './utils/api';
-window.postToApi = postToApi;
+window.getToApi = getToApi;
 // Remove after testing
 
 const preloadedState = {};

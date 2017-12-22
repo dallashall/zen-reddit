@@ -11,7 +11,7 @@ const apiProxy = proxy(
 
 const app = express();
 
-app.use(express.static('public'));
 app.use(['/api', '/r', '/dev'], apiProxy);
+app.use(express.static('public'));
 
 app.listen(3000, () => console.log('Zen Reddit awaits at \'http://localhost:3000\''));

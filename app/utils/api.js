@@ -5,9 +5,8 @@ const toApi = function toApi(url, method, payload, token) {
     const xhr = new XMLHttpRequest();
 
     xhr.onload = function xhrOnload() {
-      console.log(this.response);
       const res = JSON.parse(this.response);
-      if (res.status > 199 && res.status < 300) {
+      if (this.status > 199 && this.status < 400) {
         resolve(res);
       } else {
         reject(res);
@@ -22,9 +21,9 @@ const toApi = function toApi(url, method, payload, token) {
     const fullUrl = apiBase + url;
 
     xhr.open(method, fullUrl);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('X-Modhash', token);
-    xhr.send(params);
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+    // xhr.setRequestHeader('X-Modhash', token);
+    xhr.send();
   });
 };
 
@@ -33,5 +32,5 @@ export const postToApi = function postToApi(url, payload, token) {
 };
 
 export const getToApi = function getToApi(url, payload, token) {
-  return toApi(url, 'GET', payload, token).then(r => console.log(r));
+  return toApi(url, 'GET', payload, token);
 };

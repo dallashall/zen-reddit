@@ -12,7 +12,7 @@ export default (state = defaultState, { type, payload }) => {
       return [subreddit, ...state];
     case REMOVE_SUBREDDIT:
       const idx = state.findIndex(obj => obj.id === payload.id);
-      return idx === 0 ? [] : state.slice(0, idx).concat(state.slice(idx));
+      return idx === 0 ? [] : state.slice(0, idx).concat(state.slice(idx + 1));
     default:
       return state;
   }

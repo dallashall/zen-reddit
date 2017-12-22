@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import debounce from 'lodash.debounce';
 
 class Search extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       query: '',
     };
+    this.autocomplete = debounce(this.props.autocomplete, 200);
   }
   
   componentDidMount() {
@@ -14,9 +16,9 @@ class Search extends Component {
 
   update = (e) => {
     this.setState({ query: e.target.value }, () => {
-      this.props.autocomplete(this.state.query);
+      this.autocomplete(this.state.query);
     });
-  }
+  };
 
   add = (name) => {
     return e => {
